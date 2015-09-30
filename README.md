@@ -1,11 +1,11 @@
 From the root of the project
 
-npm install
-npm install -g serve
-npm install -g grunt-cli
-** There may be some other global npm dependencies that I'm not thinking of **
-grunt build
-serve dist/
+* npm install
+* npm install -g serve
+* npm install -g grunt-cli
+* ** There may be some other global npm dependencies that I'm not thinking of **
+* grunt build
+* serve dist/
 
 localhost:3000 (or whatever port you used if passing port param to serve)
 
