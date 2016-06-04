@@ -9,7 +9,7 @@ import EventEmitter from 'events';
 import * as constants from '../constants';
 import dispatcher from '../dispatcher';
 
-let widgets = Symbol();
+const widgets = Symbol();
 
 const WIDGETS_CHANGE = 'WIDGETS_CHANGE';
 
@@ -31,25 +31,25 @@ class WidgetStore extends EventEmitter {
     this.removeListener(WIDGETS_CHANGE, callback);
   }
 
-  getWidgets () {
+  getWidgets() {
     return this[widgets];
   }
 
-  setWidgets (w) {
+  setWidgets(w) {
     this[widgets] = w;
   }
 
-  resetWidgets () {
+  resetWidgets() {
     this[widgets] = [];
   }
 
 }
 
-let widgetStoreInstance = new WidgetStore();
+const widgetStoreInstance = new WidgetStore();
 
 widgetStoreInstance.dispatchToken = dispatcher.register(payload => {
-  var action = payload.action;
-  var data = payload.data || {};
+  const action = payload.action;
+  const data = payload.data || {};
 
   switch (action) {
     case constants.SET_WIDGETS:
@@ -63,6 +63,8 @@ widgetStoreInstance.dispatchToken = dispatcher.register(payload => {
     case constants.RESET_WIDGETS:
       widgetStoreInstance.widgets = [];
       widgetStoreInstance.emitChange();
+      break;
+    default:
       break;
   }
 

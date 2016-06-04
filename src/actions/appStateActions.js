@@ -13,8 +13,8 @@ export default {
     dispatcher.dispatchAction(
       constants.SET_ACTIVE_PANE,
       {
-        activePane: activePane
+        activePane,
       }
     );
-  }
+  },
 };

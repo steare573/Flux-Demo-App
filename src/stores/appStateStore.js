@@ -8,11 +8,10 @@ import EventEmitter from 'events';
 import * as constants from '../constants';
 import dispatcher from '../dispatcher';
 
-var appState = {};
+const appState = {
+  activePane: '',
+};
 const ACTIVEPANE_CHANGE = 'ACTIVEPANE_CHANGE';
-function reset () {
-  appState = {};
-}
 
 function setActivePane(activePane) {
   appState.activePane = activePane;
@@ -32,7 +31,7 @@ class AppStore extends EventEmitter {
     this.removeListener(ACTIVEPANE_CHANGE, callback);
   }
 
-  get appState () {
+  get appState() {
     return appState;
   }
 
@@ -41,17 +40,18 @@ class AppStore extends EventEmitter {
   }
 }
 
-let appStateInstance = new AppStore();
+const appStateInstance = new AppStore();
 
 appStateInstance.dispatchToken = dispatcher.register(payload => {
-  var action = payload.action;
-  var data = payload.data || {};
+  const action = payload.action;
+  const data = payload.data || {};
 
   switch (action) {
     case constants.SET_ACTIVE_PANE:
-      console.log('setting active pane', data.activePane);
       setActivePane(data.activePane);
       appStateInstance.emitActivePaneChange();
+      break;
+    default:
       break;
   }
 

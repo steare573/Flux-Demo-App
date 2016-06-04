@@ -6,8 +6,8 @@
  */
 
 import React from 'react';
-import appStateActions from '../actions/appStateActions';
 
+import appStateActions from '../actions/appStateActions';
 export default class Headerbar extends React.Component {
   changePaneHandler (pane) {
     return () => {
@@ -30,6 +30,7 @@ export default class Headerbar extends React.Component {
             <a href="#" style={(page === 'dashboard') ? {color: 'black'} : {}} onClick={this.changePaneHandler('dashboard')}>Dashboard</a> |
             <a href="#" style={(page === 'users') ? {color: 'black'} : {}} onClick={this.changePaneHandler('users')}>Users</a> |
             <a href="#" style={(page === 'widgets') ? {color: 'black'} : {}} onClick={this.changePaneHandler('widgets')}>Widgets</a>
+            
           </div>
         </div>
       </div>

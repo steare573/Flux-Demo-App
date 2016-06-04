@@ -4,14 +4,14 @@
  * @author Sean Teare
  * @since 2015-09-29
  */
+import { Dispatcher } from 'flux';
 
-var Dispatcher = require('flux').Dispatcher;
-var Instance = new Dispatcher();
+const Instance = new Dispatcher();
 
-Instance.dispatchAction = function (actionName, data) {
+Instance.dispatchAction = function dispatch(actionName, d) {
   this.dispatch({
     action: actionName,
-    data: data
+    data: d,
   });
 };
 

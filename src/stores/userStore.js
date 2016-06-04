@@ -8,54 +8,53 @@ import EventEmitter from 'events';
 import * as constants from '../constants';
 import dispatcher from '../dispatcher';
 
-var users = Symbol();
+const users = Symbol();
 
 const USERS_CHANGE = 'USERS_CHANGE';
 
 class UserStore extends EventEmitter {
-  constructor () {
+  constructor() {
     super();
     this[users] = [];
   }
 
-  emitChange () {
+  emitChange() {
     this.emit(USERS_CHANGE);
   }
 
-  addChangeListener (callback) {
+  addChangeListener(callback) {
     this.on(USERS_CHANGE, callback);
   }
 
-  removeChangeListener (callback) {
+  removeChangeListener(callback) {
     this.removeListener(USERS_CHANGE, callback);
   }
 
-  resetUsers () {
+  resetUsers() {
     this[users] = [];
   }
 
-  setUsers (usersArray) {
+  setUsers(usersArray) {
     this[users] = usersArray;
   }
 
-  addUser (user) {
+  addUser(user) {
     this[users].push(user);
   }
-  getUsers () {
+  getUsers() {
     return this[users];
   }
 
 }
 
-var userStoreInstance = new UserStore();
+const userStoreInstance = new UserStore();
 
 userStoreInstance.dispatchToken = dispatcher.register(payload => {
-  var action = payload.action;
-  var data = payload.data || {};
+  const action = payload.action;
+  const data = payload.data || {};
 
   switch (action) {
     case constants.SET_USERS:
-      //userStoreInstance.users = data.users;
       userStoreInstance.setUsers(data.users);
       userStoreInstance.emitChange();
       break;
@@ -66,6 +65,8 @@ userStoreInstance.dispatchToken = dispatcher.register(payload => {
     case constants.RESET_USER:
       userStoreInstance.resetUser();
       userStoreInstance.emitChange();
+      break;
+    default:
       break;
   }
 

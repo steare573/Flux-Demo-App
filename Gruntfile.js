@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -12,23 +10,23 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     filesTest: [
-      'test/**/*.test.js'
+      'test/**/*.test.js',
     ],
 
     filesGrunt: [
-      'Gruntfile.js'
+      'Gruntfile.js',
     ],
 
     filesSrc: [
       'src/**/*.js',
-      'src/**/*.jsx'
+      'src/**/*.jsx',
     ],
 
     filesAll: [
       '<%= filesTest %>',
       '<%= filesGrunt %>',
       '<%= filesSrc %>',
-      'src/styles/*.scss'
+      'src/styles/*.scss',
     ],
 
     mochaTest: {
@@ -36,36 +34,36 @@ module.exports = function (grunt) {
         options: {
           reporter: 'spec',
           require: 'should',
-          growl: true
+          growl: true,
         },
-        src: ['<%= filesTest %>']
-      }
+        src: ['<%= filesTest %>'],
+      },
     },
 
     env: {
       mocha: {
         NODE_ENV: 'development',
-        LOGLEVEL: 'fatal'
-      }
+        LOGLEVEL: 'fatal',
+      },
     },
 
     jshint: {
       options: {
-        jshintrc: '.jshintrc'
+        jshintrc: '.jshintrc',
       },
       all: '<%= filesAll %>',
       test: '<%= filesTest %>',
       src: '<% = filesSrc %>',
-      changedfile: []
+      changedfile: [],
     },
 
     jscs: {
       all: {
         src: '<%= filesAll %>',
         options: {
-          config: '.jscsrc'
-        }
-      }
+          config: '.jscsrc',
+        },
+      },
     },
 
     copy: {
@@ -73,23 +71,23 @@ module.exports = function (grunt) {
         cwd: 'components',
         src: '**/*',
         dest: 'dist/assets',
-        expand: true
+        expand: true,
       },
       img: {
         cwd: 'img',
         src: '**/*',
         dest: 'dist/img',
-        expand: true
+        expand: true,
       },
       index: {
         src: 'src/template/index.html',
-        dest: 'dist/index.html'
-      }
+        dest: 'dist/index.html',
+      },
 
     },
 
     clean: {
-      build: ['dist/assets']
+      build: ['dist/assets'],
     },
 
     browserify: {

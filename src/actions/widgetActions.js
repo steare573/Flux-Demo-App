@@ -13,7 +13,7 @@ export default {
     dispatcher.dispatchAction(
       constants.SET_WIDGETS,
       {
-        widgets: widgets
+        widgets,
       }
     );
   },
@@ -22,14 +22,14 @@ export default {
     dispatcher.dispatchAction(
       constants.ADD_WIDGET,
       {
-        widget: widget
+        widget,
       }
-    )
+    );
   },
 
   reset: () => {
     dispatcher.dispatchAction(
       constants.RESET_WIDGETS
     );
-  }
+  },
 };

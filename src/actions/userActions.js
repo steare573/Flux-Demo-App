@@ -13,7 +13,7 @@ export default {
     dispatcher.dispatchAction(
       constants.SET_USERS,
       {
-        users: users
+        users,
       }
     );
   },
@@ -22,7 +22,7 @@ export default {
     dispatcher.dispatchAction(
       constants.ADD_USER,
       {
-        user: user
+        user,
       }
     );
   },
@@ -31,5 +31,5 @@ export default {
     dispatcher.dispatchAction(
       constants.RESET_USERS
     );
-  }
+  },
 };
